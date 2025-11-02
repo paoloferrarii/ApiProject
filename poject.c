@@ -61,12 +61,12 @@ air_route* add_route( int x, int y){
 
 
 
-int toggle_air_rout(int x1, int y1, int x2, int y2, hex* m, int col, int row){   //efficetare con puntatri a puntatori
+int toggle_air_rout(int x1, int y1, int x2, int y2, hex* m, int col, int row){   
 
     hex* p;
     air_route* curr,* prec;
 
-      if(x1<0 || y1<0 || x1>=col || y1>=row || x2<0 || y2<0 || x2>=col || y2>=row){   // brutto ma efficenza vediamo
+      if(x1<0 || y1<0 || x1>=col || y1>=row || x2<0 || y2<0 || x2>=col || y2>=row){   
         return 0;
     }
     
@@ -139,9 +139,9 @@ int change_cost(int x, int y, int v, int r, hex* m, int row, int col){
         r=r-1;
         for(q=-r;q<=r;q++){
             if(q<=0){
-                for(p=-(r+q);p<=r;p++){   // fastidio sistema
+                for(p=-(r+q);p<=r;p++){   
                 dr=q;
-                dc= y&1?(p+(q+(q&1))/2):(p+(q-(q&1))/2);    //controllo se è vero uguale invertito
+                dc= y&1?(p+(q+(q&1))/2):(p+(q-(q&1))/2);   
                 nr=y+dr;
                 nc=x+dc;
                 if(nr>=0 && nr<row && nc>=0 && nc<col){
@@ -157,7 +157,7 @@ int change_cost(int x, int y, int v, int r, hex* m, int row, int col){
             }else{
                 for(p=r-q;p>=-r;p--){
                 dr=q;
-                dc=y&1?(p+(q+(q&1))/2):(p+(q-(q&1))/2);    //controllo se è vero uguale invertito
+                dc=y&1?(p+(q+(q&1))/2):(p+(q-(q&1))/2);   
                 nr=y+dr;
                 nc=x+dc;
                 zn=nr*col+nc;
@@ -188,7 +188,7 @@ int travel_cost(hex* m, int x1, int y1, int x2, int y2, int col, int row, bucket
     int dcp[6]={+1,0,-1,-1,-1,0};
     air_route* curr;
 
-    if(x1<0 || y1<0 || y1>=row || x1>=col || x2<0 || y2<0 || y2>=row || x2>=col){   // brutto ma efficenza vediamo
+    if(x1<0 || y1<0 || y1>=row || x1>=col || x2<0 || y2<0 || y2>=row || x2>=col){   
         return -1;
     }
     if(x1==x2 && y1==y2)
@@ -259,7 +259,7 @@ int travel_cost(hex* m, int x1, int y1, int x2, int y2, int col, int row, bucket
             xn=xc+(((yc)&1)==1?dcd[i]:dcp[i]);
             zn=yn*col+xn;
             
-            if(xn<0 || xn>=col || yn<0 || yn>=row) // vediamo come va
+            if(xn<0 || xn>=col || yn<0 || yn>=row) 
                 continue;
             gn=map[zc].g+m[zc].cost;
             if(!map[zn].visited && gn<map[zn].g ){
@@ -343,6 +343,7 @@ int main(){
 
     return 0;
 }
+
 
 
 
